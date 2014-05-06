@@ -10,4 +10,7 @@ return array(
             return $helper;
         },
     ),
+    'invokables' => array(
+        'GbiliUserModuleScriptPaths' => __NAMESPACE__ . 'View\Helper\ScriptPaths',
+    ),
 );
