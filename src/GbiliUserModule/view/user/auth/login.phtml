@@ -1,0 +1,26 @@
+<?php
+$title = 'Login';
+$this->headTitle($title);
+?>
+<?php $this->notify(((isset($messages))? $messages : array())) ?>
+<div class="row">
+    <div class="col-sm-1 col-md-4 col-lg-4"></div>
+    <div class="col-sm-10 col-md-4 col-lg-4">
+        <h1 class="cancel-padding"><?php echo $this->escapeHtml($title); ?></h1>
+    </div>
+    <div class="col-sm-1 col-md-4 col-lg-4"></div>
+</div>
+<div class="row">
+    <div class="col-sm-1 col-md-4 col-lg-4"></div>
+    <div class="col-sm-10 col-md-4 col-lg-4">
+        <?php $this->formActionPrepare($form) ?>
+        <?= $this->renderForm($form) ?>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <p class="hint"><?= $this->translate('Not member already?') ?>&nbsp;<a href="<?= $this->url('auth_register', array('action'=>'register'), true) ?>"><?= $this->translate('Register') ?></a></p>
+                <p class="hint"><?= $this->translate('Forgot Password?') ?>&nbsp;<a href="<?= $this->url('auth_recoverpassword', array('action'=>'recoverpassword'), true) ?>"><?= $this->translate('Recover Password') ?></a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-1 col-md-4 col-lg-4"></div>
+</div>

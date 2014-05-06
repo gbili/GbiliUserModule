@@ -1,0 +1,45 @@
+<?php
+if (!isset($__VIEWFILE__)) {
+    throw new \Exception('$__VIEWFILE__ variable must be set with __FILE__ constant from the view file, in order for the partial to work.');
+}
+
+$fileparts = explode('/', $__VIEWFILE__);
+$action = substr(end($fileparts), 0, -6);
+$controller = prev($fileparts); 
+$textdomain = prev($fileparts);
+$routename = $controller . '_' . $action;
+$route = array(
+    'lang' => $this->lang(),
+    'controller' => $controller,
+    'action' => $action
+);
+if (isset($entityId) && null !== $entityId) {
+    $route['id'] = $entityId;
+}
+$form->setAttribute('action', $this->url($routename, $route));
+$form->setAttribute('class', 'form-horizontal');
+$form->prepare();
+?>
+<?php
+$title = ucfirst($action) . ' ' . ucfirst($controller);
+$this->headTitle($title);
+?>
+<?php $this->notify(((isset($messages))? $messages : array())) ?>
+<div class="row">
+    <div class="col-sm-0 col-md-2 col-lg-2"></div>
+    <div class="col-sm-12 col-md-8 col-lg-8">
+        <h1><?php echo $this->escapeHtml($title); ?></h1>
+    </div>
+    <div class="col-sm-0 col-md-2 col-lg-2"></div>
+</div>
+<div class="row">
+    <div class="col-sm-0 col-md-2 col-lg-2"></div>
+    <div class="col-sm-12 col-md-8 col-lg-8">
+    <?php echo $this->form()->openTag($form)?>
+        <?php foreach ($this->elementsFlatArray($form) as $element) : ?>
+            <?= $this->renderElement($element, 'user') ?>
+        <?php endforeach ?>
+    <?php echo $this->form()->closeTag() ?>
+    </div>
+    <div class="col-sm-0 col-md-2 col-lg-2"></div>
+</div>

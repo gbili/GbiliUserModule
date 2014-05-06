@@ -1,0 +1,52 @@
+<?php
+$title = 'Users';
+$this->headTitle($title);
+?>
+<div class="row">
+    <div class="col-sm-4 col-md-4 col-4">
+        <h1><?php echo $this->escapeHtml($title); ?></h1>
+    </div>
+    <div class="col-sm-8 col-md-8 col-8">
+    </div>
+</div>
+<table class="table table-bordered table-hover">
+    <tr>
+        <th><?php echo $this->translate('Id', 'user')?></th>
+        <th><?php echo $this->translate('Role', 'user')?></th>
+        <th><?php echo $this->translate('Uniquename', 'user')?></th>
+        <th><?php echo $this->translate('Email', 'user')?></th>
+        <th><?php echo $this->translate('Picture', 'user')?></th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach($users as $user) : ?>
+	    <tr>
+	        <td><?php echo $this->escapeHtml($user->getId());?></td>
+	        <td><?php echo $this->escapeHtml($user->getRole());?></td>
+	        <td><?php echo $this->escapeHtml($user->getUniquename());?></td>
+	        <td><?php echo $this->escapeHtml($user->getEmail());?></td>
+	        <td><?php echo (($user->hasProfile())? $this->escapeHtml($user->getProfile()->getMedia()->getSrc()) : '')?></td>
+	        <td>
+                <a href="<?php echo $this->url('admin_edit', array(
+                    'lang' => $this->lang(),
+                    'controller' => 'admin', 
+                    'action' => 'edit', 
+                    'id' => $user->getId(),
+                )); ?>"><?php echo $this->translate('Edit', 'user')?></a>
+	        </td>
+	        <td>
+                <a href="<?php echo $this->url('admin_delete', array(
+                    'lang' => $this->lang(),
+                    'controller' => 'admin', 
+                    'action' => 'delete',
+                    'id' => $user->getId()
+                )); ?>" onclick="return confirm('Are you sure?')"><?php echo $this->translate('Delete', 'user')?></a>
+	        </td>
+	    </tr>
+    <?php endforeach; ?>
+    <?php if (empty($users)) : ?>
+	    <tr>
+            <td><?php echo $this->translate('There are no users for the moment...', 'user')?></td>
+	    </tr>
+    <?php endif ?>
+</table>

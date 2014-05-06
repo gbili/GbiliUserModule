@@ -1,0 +1,33 @@
+<?php $this->notify(((isset($messages))? $messages : array())) ?>
+<div class="row">
+    <div class="col-sm-1 col-md-2 col-lg-2"></div>
+    <div class="col-sm-10 col-md-8 col-lg-8">
+        <header class="row">
+            <div class="col-sm-8 col-md-8 col-8">
+                <?php $patterns = array('firstname', 'surname')?>
+                <?php $replacements = array($profile->getFirstname(), $profile->getSurname())?>
+                <h3><?= $this->patternTranslate($patterns, $replacements, "firstname surname<small>'s Profile</small>") ?></h3>
+            </div>
+            <div class="col-sm-4 col-md-4 col-4">
+            </div>
+        </header>
+        <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-3">
+                <img src="<?php echo $media->getSrc()?>" class="img-rounded img-responsive" alt="<?= ((null !== $mediaMetadata)? $mediaMetadata->getAlt() : '')?>"/>
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-9">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><?= $this->translate('Info')?></div>
+                    <ul class="list-group">
+                        <li class="list-group-item"><strong><?= $this->translate('Username')?></strong> : <?= $user->getUniquename()?></li>
+                    </ul>
+                    <?php $options = array() ?>
+                    <?php $options['bold_dog_names'] = true ?>
+                    <?php $options['refer_as_you'] = false ?>
+                    <div class="panel-body"><p><?= $this->userHasNDogsAndTheirNamesArePhrase($user, $options) ?></p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-1 col-md-2 col-lg-2"></div>
+</div>
