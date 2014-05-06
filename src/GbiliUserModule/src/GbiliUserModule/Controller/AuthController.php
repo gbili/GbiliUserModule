@@ -108,7 +108,7 @@ class AuthController extends \Zend\Mvc\Controller\AbstractActionController
         $uniquenamePattern = '/(?:\\A(?:[A-Za-z0-9]+(?:[-_.]?[A-Za-z0-9]+)*){4,}\\z)/';
         $uniquenameValidator = new \Zend\Validator\Regex($uniquenamePattern);
         if ($uniquenameValidator->isValid($uniquenameOrEmail)) {
-            $users = $this->em()->getRepository('User\Entity\User')->findByUniquename($uniquenameOrEmail);
+            $users = $this->em()->getRepository('GbiliUserModule\Entity\User')->findByUniquename($uniquenameOrEmail);
             if (empty($users)) {
                 return false;
             }
@@ -121,7 +121,7 @@ class AuthController extends \Zend\Mvc\Controller\AbstractActionController
             if ($returnEmail) {
                 return $uniquenameOrEmail;
             }
-            $users = $this->em()->getRepository('User\Entity\User')->findByEmail($uniquenameOrEmail);
+            $users = $this->em()->getRepository('GbiliUserModule\Entity\User')->findByEmail($uniquenameOrEmail);
             if (empty($users)) {
                 return false;
             }
@@ -216,7 +216,7 @@ class AuthController extends \Zend\Mvc\Controller\AbstractActionController
 
     public function persistUser($validatedUserData)
     {
-        $user = new \User\Entity\User();
+        $user = new \GbiliUserModule\Entity\User();
         $user->hydrate($validatedUserData);
         $user->setRole('user');
         $objectManager = $this->em();
@@ -227,14 +227,14 @@ class AuthController extends \Zend\Mvc\Controller\AbstractActionController
     public function isEmailAlreadyInUse($email)
     {
         $objectManager = $this->em();
-        $users = $objectManager->getRepository('User\Entity\User')->findByEmail($email);
+        $users = $objectManager->getRepository('GbiliUserModule\Entity\User')->findByEmail($email);
         return !empty($users);
     }
 
     public function isUniquenameAlreadyInUse($uniquename)
     {
         $objectManager = $this->em();
-        $users = $objectManager->getRepository('User\Entity\User')->findByUniquename($uniquename);
+        $users = $objectManager->getRepository('GbiliUserModule\Entity\User')->findByUniquename($uniquename);
         return !empty($users);
     }
 

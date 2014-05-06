@@ -45,7 +45,7 @@ class RecoverPassword
         return $this->id;
     }
 
-    public function setUser(\User\Entity\User $user)
+    public function setUser(\GbiliUserModule\Entity\User $user)
     {
         $this->user = $user;
     }

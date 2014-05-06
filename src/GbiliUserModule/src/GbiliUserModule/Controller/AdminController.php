@@ -8,7 +8,7 @@ class AdminController extends \Zend\Mvc\Controller\AbstractActionController
      */
     public function indexAction()
     {
-        $users = $this->getEntityManager()->getRepository('User\Entity\User')->findAll();
+        $users = $this->getEntityManager()->getRepository('GbiliUserModule\Entity\User')->findAll();
         return new \Zend\View\Model\ViewModel(array(
             'users' => $users, 
         ));
@@ -59,7 +59,7 @@ class AdminController extends \Zend\Mvc\Controller\AbstractActionController
 
     public function getProfileByUserId($userId)
     {
-        $users = $this->getEntityManager()->getRepository('User\Entity\User')->findById((integer) $userId);
+        $users = $this->getEntityManager()->getRepository('GbiliUserModule\Entity\User')->findById((integer) $userId);
         if (empty($users)) {
             throw new \Exception("User with id: $userId, does not exist");
         }
@@ -71,7 +71,7 @@ class AdminController extends \Zend\Mvc\Controller\AbstractActionController
      */
     public function deleteAction()
     {
-        $user = $this->getEntityManager()->getRepository('User\Entity\User')->find($this->params('id'));
+        $user = $this->getEntityManager()->getRepository('GbiliUserModule\Entity\User')->find($this->params('id'));
         if ($post) {
             $em = $this->getEntityManager();
             $em->remove($user);

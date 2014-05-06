@@ -28,7 +28,7 @@ class ProfileController extends \Zend\Mvc\Controller\AbstractActionController
         return $this->displayUserProfile($user);
     }
 
-    protected function displayUserProfile(\User\Entity\User $user)
+    protected function displayUserProfile(\GbiliUserModule\Entity\User $user)
     {
         $profile = $user->getProfile();        
         $media = $profile->getMedia();
@@ -75,12 +75,12 @@ class ProfileController extends \Zend\Mvc\Controller\AbstractActionController
     public function isParamsUniquenameExistingUser()
     {
         if (null === $this->paramsUniquenameUser) {
-            $users = $this->em()->getRepository('User\Entity\User')->findByUniquename($this->getParamsUniquename());
+            $users = $this->em()->getRepository('GbiliUserModule\Entity\User')->findByUniquename($this->getParamsUniquename());
             if (!empty($users)) {
                  $this->paramsUniquenameUser = current($users);
             }
         }
-        return $this->paramsUniquenameUser instanceof \User\Entity\User;
+        return $this->paramsUniquenameUser instanceof \GbiliUserModule\Entity\User;
     }
 
     public function getParamsUniquenameUser()

@@ -4,10 +4,10 @@ return array(
    'authentication' => array(
        'orm_default' => array(
            'object_manager' => 'Doctrine\ORM\EntityManager',
-           'identity_class' => 'User\Entity\User',
+           'identity_class' => 'GbiliUserModule\Entity\User',
            'identity_property' => 'email',
            'credential_property' => 'password',
-           'credential_callable' => function (\User\Entity\User $user, $passwordGiven) {
+           'credential_callable' => function (\GbiliUserModule\Entity\User $user, $passwordGiven) {
                return $user->isThisPassword($passwordGiven);
            },
        ),
