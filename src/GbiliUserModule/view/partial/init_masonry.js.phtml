@@ -1,0 +1,29 @@
+<?php $this->scriptalicious()->addSrc('jQuery', '/js/jquery-ui-1.10.4.custom.min.js') ?>
+<?php $this->scriptalicious()->addSrc('imagesloaded', '/js/imagesloaded.pkgd.min.js')
+    ->addDependency('imagesloaded', 'jQuery') ?>
+<?php $this->scriptalicious()->addSrc('masonry', '/js/masonry.pkgd.min.js')
+    ->addDependency('masonry', 'jQuery') ?>
+
+<?php if (!isset($masonryColumnWidth)) : ?>
+    <?php $masonryColumnWidth = 200 ?>
+<?php endif ?>
+
+<?php ob_start() ?>
+<script type="text/javascript">
+/* File: <?= __FILE__ ?>*/
+(function () {
+    var $container = $(".please_masonize_<?= $masonryColumnWidth ?>");
+    $container.imagesLoaded(function () {
+        $container.masonry({
+            itemSelector: 'li',
+            columnWidth: <?= $masonryColumnWidth ?>,
+        })
+    });
+})();
+</script>
+<?php $init_masonry = ob_get_clean() ?>
+<?php $this->scriptalicious()->addInline('init_masonry', $init_masonry)
+    ->addDependency('init_masonry', 'masonry')
+    ->addDependency('init_masonry', 'imagesloaded') ?>
+
+<?php unset($init_masonry) ?>
