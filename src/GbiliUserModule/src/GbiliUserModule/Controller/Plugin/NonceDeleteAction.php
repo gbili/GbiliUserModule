@@ -39,7 +39,7 @@ class NonceDeleteAction extends \Zend\Mvc\Controller\Plugin\AbstractPlugin
 
         $loggedInUser = $controller->identity();
         if (!$loggedInUser->isAdmin()) {
-            if (($entity instanceof \User\IsOwnedByInterface) && !$entity->isOwnedBy($loggedInUser)) {
+            if (($entity instanceof \GbiliUserModule\IsOwnedByInterface) && !$entity->isOwnedBy($loggedInUser)) {
                 // TODO does this ever happen since nonce is valid?? It would if entities were not trimmed by logged in user during query
                 throw new \Exception('Access denied, thing does not belong to you');
             }
