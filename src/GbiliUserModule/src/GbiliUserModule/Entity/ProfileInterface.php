@@ -1,5 +1,5 @@
 <?php
-namesapace GbiliUserModule\Entity;
+namespace GbiliUserModule\Entity;
 
 /**
  *

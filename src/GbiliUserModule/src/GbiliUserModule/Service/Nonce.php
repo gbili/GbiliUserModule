@@ -1,5 +1,5 @@
 <?php
-namesapace GbiliUserModule\Service;
+namespace GbiliUserModule\Service;
 
 class Nonce 
 {

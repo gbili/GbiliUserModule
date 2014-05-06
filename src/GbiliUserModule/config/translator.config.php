@@ -1,5 +1,5 @@
 <?php
-namesapace GbiliUserModule;
+namespace GbiliUserModule;
 return array(
     'translation_file_patterns' => array(
         array(

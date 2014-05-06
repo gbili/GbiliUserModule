@@ -1,5 +1,5 @@
 <?php
-namesapace GbiliUserModule;
+namespace GbiliUserModule;
 return array(
     'regex_patterns' => array(
         'lang'       => '(?:en)|(?:es)|(?:fr)|(?:de)|(?:it)',

@@ -1,5 +1,5 @@
 <?php
-namesapace GbiliUserModule;
+namespace GbiliUserModule;
 
 interface IsOwnedByInterface
 {

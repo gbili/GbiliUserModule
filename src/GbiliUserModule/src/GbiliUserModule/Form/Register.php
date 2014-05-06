@@ -1,5 +1,5 @@
 <?php
-namesapace GbiliUserModule\Form;
+namespace GbiliUserModule\Form;
 
 class Register extends \Zend\Form\Form 
 implements \Zend\InputFilter\InputFilterProviderInterface

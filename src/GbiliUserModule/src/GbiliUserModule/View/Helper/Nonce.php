@@ -7,7 +7,7 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-namesapace GbiliUserModule\View\Helper;
+namespace GbiliUserModule\View\Helper;
 
 /**
  * nonce()->setRouteName('my_route_name');

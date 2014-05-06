@@ -1,5 +1,5 @@
 <?php
-namesapace GbiliUserModule;
+namespace GbiliUserModule;
 
 return array(
     'gbiliuser_profile_controller' => array(

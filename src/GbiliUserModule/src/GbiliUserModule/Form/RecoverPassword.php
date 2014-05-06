@@ -1,5 +1,5 @@
 <?php
-namesapace GbiliUserModule\Form;
+namespace GbiliUserModule\Form;
 
 class RecoverPassword extends \Zend\Form\Form 
 {

@@ -1,5 +1,5 @@
 <?php
-namesapace GbiliUserModule\Form;
+namespace GbiliUserModule\Form;
 
 class LoginUniquenameOrEmail extends \Zend\Form\Form 
 {

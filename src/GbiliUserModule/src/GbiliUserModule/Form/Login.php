@@ -1,5 +1,5 @@
 <?php
-namesapace GbiliUserModule\Form;
+namespace GbiliUserModule\Form;
 
 class Login extends \Zend\Form\Form 
 {

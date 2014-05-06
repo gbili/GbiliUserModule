@@ -1,5 +1,5 @@
 <?php
-namesapace GbiliUserModule\Form\Fieldset;
+namespace GbiliUserModule\Form\Fieldset;
 
 class UserUniquenameAndEmailSameInput extends \Zend\Form\Fieldset 
 implements \Zend\InputFilter\InputFilterProviderInterface

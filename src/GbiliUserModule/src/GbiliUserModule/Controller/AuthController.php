@@ -1,5 +1,5 @@
 <?php
-namesapace GbiliUserModule\Controller;
+namespace GbiliUserModule\Controller;
 
 use DoctrineORMModule\Stdlib\Hydrator\DoctrineEntity;
 use Zend\View\Model\ViewModel;

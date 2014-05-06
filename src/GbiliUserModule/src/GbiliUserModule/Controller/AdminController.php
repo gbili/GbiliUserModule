@@ -1,5 +1,5 @@
 <?php
-namesapace GbiliUserModule\Controller;
+namespace GbiliUserModule\Controller;
 
 class AdminController extends \Zend\Mvc\Controller\AbstractActionController
 {

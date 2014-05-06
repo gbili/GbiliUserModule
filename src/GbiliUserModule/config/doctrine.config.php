@@ -1,5 +1,5 @@
 <?php
-namesapace GbiliUserModule;
+namespace GbiliUserModule;
 return array(
    'authentication' => array(
        'orm_default' => array(

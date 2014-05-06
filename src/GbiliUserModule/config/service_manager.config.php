@@ -1,5 +1,5 @@
 <?php
-namesapace GbiliUserModule;
+namespace GbiliUserModule;
 return array(
     'invokables' => array(
         'User\Service\Nonce' => __NAMESPACE__ . '\Service\Nonce',

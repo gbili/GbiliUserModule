@@ -1,5 +1,5 @@
 <?php
-namesapace GbiliUserModule;
+namespace GbiliUserModule;
 return array(
     'invokables' => array(
         'auth' => 'User\Controller\AuthController',

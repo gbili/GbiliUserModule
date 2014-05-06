@@ -1,5 +1,5 @@
 <?php
-namesapace GbiliUserModule;
+namespace GbiliUserModule;
 return array(
     'factories' => array(
         'nonce'        => function ($viewHelperPluginManager) {
