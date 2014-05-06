@@ -11,6 +11,6 @@ return array(
         },
     ),
     'invokables' => array(
-        'GbiliUserModuleScriptPaths' => __NAMESPACE__ . 'View\Helper\ScriptPaths',
+        'GbiliUserModuleScriptPaths' => __NAMESPACE__ . '\View\Helper\ScriptPaths',
     ),
 );
