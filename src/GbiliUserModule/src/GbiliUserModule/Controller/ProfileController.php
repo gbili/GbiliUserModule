@@ -113,7 +113,7 @@ class ProfileController extends \Zend\Mvc\Controller\AbstractActionController
      */
     public function listAction()
     {
-        $profiles = $this->em()->getRepository('User\Entity\Profile')->findAll();
+        $profiles = $this->em()->getRepository('GbiliUserModule\Entity\Profile')->findAll();
 
         return new \Zend\View\Model\ViewModel(array(
             'profiles' => $profiles,

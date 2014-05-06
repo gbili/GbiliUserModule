@@ -79,7 +79,7 @@ class AuthController extends \Zend\Mvc\Controller\AbstractActionController
 
         // Add user to Lost passwords db records
         $remoteAddress   = new \Zend\Http\PhpEnvironement\RemoteAddress();
-        $recoverPassword = new \User\Entity\RecoverPassword();
+        $recoverPassword = new \GbiliUserModule\Entity\RecoverPassword();
         $recoverPassword->setIpaddress($remoteAddress->getIpAddress());
         $recoverPassword->setUser($user);
         $recoverPassword->setDatecreated(new \DateTime('now', new \DateTimeZone('UTC')));
