@@ -18,7 +18,7 @@ class Nonce extends \Zend\Mvc\Controller\Plugin\AbstractPlugin
     protected $service;
 
 
-    public function setService(\User\Service\Nonce $service)
+    public function setService(\GbiliUserModule\Service\Nonce $service)
     {
         $this->service = $service;
         return $this;

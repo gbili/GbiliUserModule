@@ -17,7 +17,7 @@ class AuthController extends \Zend\Mvc\Controller\AbstractActionController
             return $this->logged();
         }
 
-        $form = new \User\Form\LoginUniquenameOrEmail();
+        $form = new \GbiliUserModule\Form\LoginUniquenameOrEmail();
 
         if (!$this->request->isPost()) {
             return new ViewModel(array(
@@ -52,7 +52,7 @@ class AuthController extends \Zend\Mvc\Controller\AbstractActionController
     {
         //TODO create a form that allows the user to insert
         // its username or email
-        $form = new \User\Form\RecoverPassword();
+        $form = new \GbiliUserModule\Form\RecoverPassword();
         if (!$this->request->isPost()) {
             return new \Zend\View\Model\ViewModel(array(
                 'form' => $form,
@@ -163,7 +163,7 @@ class AuthController extends \Zend\Mvc\Controller\AbstractActionController
         }
         $messages = array();
 
-        $form = new \User\Form\Register();
+        $form = new \GbiliUserModule\Form\Register();
 
         if (!$this->request->isPost()) {
             return new ViewModel(array(

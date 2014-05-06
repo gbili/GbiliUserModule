@@ -23,7 +23,7 @@ class AdminController extends \Zend\Mvc\Controller\AbstractActionController
         $user          = $this->identity();
         $profile       = $this->getProfileByUserId($this->params()->fromRoute('id'));
 
-        $profileForm   = new \User\Form\ProfileEdit($objectManager);
+        $profileForm   = new \GbiliUserModule\Form\ProfileEdit($objectManager);
         $profileForm->bind($profile);
 
         if (!$this->request->isPost()) {

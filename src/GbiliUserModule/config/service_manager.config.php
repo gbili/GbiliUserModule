@@ -2,7 +2,7 @@
 namespace GbiliUserModule;
 return array(
     'invokables' => array(
-        'User\Service\Nonce' => __NAMESPACE__ . '\Service\Nonce',
+        'GbiliUserModule\Service\Nonce' => __NAMESPACE__ . '\Service\Nonce',
     ),
 
     'factories' => array(

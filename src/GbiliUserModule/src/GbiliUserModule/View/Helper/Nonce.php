@@ -20,7 +20,7 @@ class Nonce extends \Zend\View\Helper\AbstractHelper
 {
     protected $service;
 
-    public function setService(\User\Service\Nonce $service)
+    public function setService(\GbiliUserModule\Service\Nonce $service)
     {
         $this->service = $service;
         return $this;

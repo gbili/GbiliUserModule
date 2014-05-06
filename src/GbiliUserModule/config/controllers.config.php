@@ -2,8 +2,8 @@
 namespace GbiliUserModule;
 return array(
     'invokables' => array(
-        'auth' => 'User\Controller\AuthController',
-        'gbiliuser_profile_controller' => 'User\Controller\ProfileController',
-        'admin' => 'User\Controller\AdminController',
+        'auth' => 'GbiliUserModule\Controller\AuthController',
+        'gbiliuser_profile_controller' => 'GbiliUserModule\Controller\ProfileController',
+        'admin' => 'GbiliUserModule\Controller\AdminController',
     ),
 );

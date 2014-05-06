@@ -138,7 +138,7 @@ class ProfileController extends \Zend\Mvc\Controller\AbstractActionController
         $user          = $this->identity();
         $profile       = $user->getProfile();
 
-        $profileForm   = new \User\Form\ProfileEditor($this->getServiceLocator());
+        $profileForm   = new \GbiliUserModule\Form\ProfileEditor($this->getServiceLocator());
         $profileForm->bind($profile);
 
         if (!$this->request->isPost()) {

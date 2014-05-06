@@ -28,7 +28,7 @@ class Nonce
 
     /**
      * User that is allowed to perform action
-     * @var \User\PasswordIdInterface
+     * @var \GbiliUserModule\PasswordIdInterface
      */
     protected $user;
 
