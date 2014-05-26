@@ -29,7 +29,7 @@ interface MediaInterface
 
     public function getPublicdir();
 
-    public function setFile(File $file);
+    public function setFile(FileInterface $file);
 
     public function getFile();
 
