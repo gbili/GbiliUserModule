@@ -26,28 +26,28 @@ class UserData implements UserDataInterface
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\OneToMany(targetEntity="\Blog\Entity\Post", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="\Blog\Entity\Post", mappedBy="userdata")
      */
     private $posts;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\OneToMany(targetEntity="\Blog\Entity\Category", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="\Blog\Entity\Category", mappedBy="userdata")
      */
     private $categories;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\OneToMany(targetEntity="\Blog\Entity\Media", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="\Blog\Entity\Media", mappedBy="userdata")
      */
     private $medias;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\OneToMany(targetEntity="\Dogtore\Entity\Dog", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="\Dogtore\Entity\Dog", mappedBy="userdata")
      */
     private $dogs;
 
