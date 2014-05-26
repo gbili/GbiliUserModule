@@ -52,7 +52,7 @@ class UserData implements UserDataInterface
     private $dogs;
 
     /**
-     * @ORM\OneToOne(targetEntity="Profile", inversedBy="user")
+     * @ORM\OneToOne(targetEntity="\GbiliUserModule\Entity\ProfileInterface", inversedBy="userdata")
      * @ORM\JoinColumn(name="profile_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $profile;

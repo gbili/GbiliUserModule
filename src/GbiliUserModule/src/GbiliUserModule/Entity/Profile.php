@@ -32,9 +32,9 @@ class Profile implements ProfileInterface
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="User", mappedBy="profile", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="\GbiliUserModule\Entity\UserDataInterface", mappedBy="profile", cascade={"persist"})
      */
-    private $user;
+    private $userdata;
 
     /**
      * @ORM\ManyToOne(targetEntity="\GbiliUserModule\Entity\MediaInterface", inversedBy="profiles")
