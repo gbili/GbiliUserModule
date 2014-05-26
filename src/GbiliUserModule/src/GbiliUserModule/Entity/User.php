@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="users")
  * @ORM\Entity
  */
-class User 
+class User implements UserInterface
 {
     /**
      * @ORM\Column(name="id", type="integer")
@@ -24,32 +24,11 @@ class User
     private $recoveredpasswords;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var \GbiliUserModule\Entity\UserDataInterface
      *
-     * @ORM\OneToMany(targetEntity="\Blog\Entity\Post", mappedBy="user")
+     * @ORM\OneToOne(targetEntity="\GbiliUserModule\Entity\UserDataInterface", inversedBy="user")
      */
-    private $posts;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\OneToMany(targetEntity="\Blog\Entity\Category", mappedBy="user")
-     */
-    private $categories;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\OneToMany(targetEntity="\Blog\Entity\Media", mappedBy="user")
-     */
-    private $medias;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\OneToMany(targetEntity="\Dogtore\Entity\Dog", mappedBy="user")
-     */
-    private $dogs;
+    private $data;
 
     /**
      * @var string
@@ -64,12 +43,6 @@ class User
      * @ORM\Column(name="email", type="string", length=64, nullable=false, unique=true)
      */
     private $email;
-
-    /**
-     * @ORM\OneToOne(targetEntity="Profile", inversedBy="user")
-     * @ORM\JoinColumn(name="profile_id", referencedColumnName="id", onDelete="CASCADE")
-     */
-    private $profile;
 
     /**
      * @var string
@@ -87,9 +60,6 @@ class User
 
     public function __construct()
     {
-        $this->posts      = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->dogs       = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function isAdmin()
@@ -105,6 +75,7 @@ class User
     public function setRole($role)
     {
         $this->role = $role;
+        return $this;
     }
 
     public function getRole()
@@ -115,6 +86,7 @@ class User
     public function setEmail($email)
     {
         $this->email = $email;
+        return $this;
     }
 
     public function getEmail()
@@ -125,6 +97,7 @@ class User
     public function setUniquename($uniquename)
     {
         $this->uniquename = $uniquename;
+        return $this;
     }
 
     public function getUniquename()
@@ -132,28 +105,11 @@ class User
         return $this->uniquename;
     }
 
-    public function setProfile(ProfileInterface $profile)
-    {
-        $this->profile = $profile;
-    }
-
-    public function getProfile()
-    {
-        if (null === $this->profile) {
-            $this->profile = new Profile(); 
-        }
-        return $this->profile;
-    }
-
-    public function hasProfile()
-    {
-        return $this->profile instanceof ProfileInterface;
-    }
-
     public function setPassword($clearPassword)
     {
         $bcrypt = new \Zend\Crypt\Password\Bcrypt();
         $this->password = $bcrypt->create($clearPassword);
+        return $this;
     }
 
     public function getPassword()
@@ -174,74 +130,29 @@ class User
             $method = 'set' . ucfirst($method);
             $this->$method($param);
         }
+        return $this;
     }
 
+    public function setData(UserDataInterface $data)
+    {
+        $this->data = $data;
+        return $this;
+    }
+
+    public function getData()
+    {
+        if (null === $this->data) {
+            throw new \Exception('No data is set');
+        }
+        return $this->data;
+    }
+
+    /**
+     * Attempt to use $this->data as proxy
+     *
+     */
     public function __call($method, $params)
     {
-        $allowed = array('Dog', 'Post', 'Category');
-        $allowedPlural = array('Dogs',  'Posts', 'Categories');
-
-        $parts = preg_split('/(?=[A-Z])/', $method);
-        $uCFirstWhat = array_pop($parts);
-        $what = strtolower($uCFirstWhat);
-
-        $isSingle = in_array($uCFirstWhat, $allowed);
-        $isPlural = in_array($uCFirstWhat, $allowedPlural);
-
-        if (!$isSingle && !$isPlural) {
-            throw new \Exception('Not implemented');
-        }
-
-        array_push($parts, (($isSingle)? 'Thing':'Things'));
-        $genericMethod = implode('', $parts);
-
-        return call_user_func(array($this, $genericMethod), (($isSingle)? $what . 's' : $what), current($params));
-    }
-
-    public function getThing($what)
-    {
-        return $this->$what;
-    }
-
-    public function getThings($what)
-    {
-        return $this->$what;
-    }
-
-    public function hasthings($what)
-    {
-        return !$this->$what->isEmpty();
-    }
-
-    public function addThing($what, $thing)
-    {
-        $thing->setUser($this);
-        $this->$what->add($thing);
-    }
-
-    public function addThings($what, \Doctrine\Common\Collections\Collection $things)
-    {
-        foreach ($things as $thing) {
-            $this->addThing($what, $thing);
-        }
-    }
-
-    public function removeThing($what, $thing)
-    {
-        $this->$what->removeElement($thing);
-        $thing->setUser(null);
-    }
-
-    public function removeThings($what, \Doctrine\Common\Collections\Collection $things)
-    {
-        foreach ($things as $thing) {
-            $this->removeThing($what, $thing);
-        }
-    }
-
-    public function removeAllThings($what)
-    {
-        $this->removeThings($what, $this->getThings($what));
-        return $this;
+        return call_user_func_array(array($this->getData(), $method), $params);
     }
 }
