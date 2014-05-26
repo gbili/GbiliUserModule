@@ -135,6 +135,14 @@ class User implements UserInterface
 
     public function setData(UserDataInterface $data)
     {
+        if ($data->hasUser()) {
+            if($data->getUser() !== $this) {
+                throw new \Exception('The data belongs to someone else');
+            }
+        } else {
+            $data->setUser($this);
+        }
+
         $this->data = $data;
         return $this;
     }
@@ -142,7 +150,7 @@ class User implements UserInterface
     public function getData()
     {
         if (null === $this->data) {
-            throw new \Exception('No data is set');
+            $this->setData(new UserData());
         }
         return $this->data;
     }
