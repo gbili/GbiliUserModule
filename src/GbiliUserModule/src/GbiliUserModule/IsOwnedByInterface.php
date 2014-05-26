@@ -6,5 +6,5 @@ interface IsOwnedByInterface
     /**
      * @return boolean
      */
-    public function isOwnedBy(Entity\User $user);
+    public function isOwnedBy(Entity\UserInterface $user);
 }
