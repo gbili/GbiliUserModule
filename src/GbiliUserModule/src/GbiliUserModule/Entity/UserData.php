@@ -4,7 +4,7 @@ namespace GbiliUserModule\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Table(name="users")
+ * @ORM\Table(name="user_data")
  * @ORM\Entity
  */
 class UserData implements UserDataInterface
