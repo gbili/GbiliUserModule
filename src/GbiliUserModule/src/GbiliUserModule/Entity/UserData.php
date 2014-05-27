@@ -145,7 +145,7 @@ class UserData implements UserDataInterface
 
     public function addThing($what, $thing)
     {
-        $thing->setUser($this);
+        $thing->setUserData($this);
         $this->$what->add($thing);
     }
 
@@ -159,7 +159,7 @@ class UserData implements UserDataInterface
     public function removeThing($what, $thing)
     {
         $this->$what->removeElement($thing);
-        $thing->setUser(null);
+        $thing->setUserData(null);
     }
 
     public function removeThings($what, \Doctrine\Common\Collections\Collection $things)
