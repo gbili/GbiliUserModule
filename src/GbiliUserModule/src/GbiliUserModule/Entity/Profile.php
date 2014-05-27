@@ -96,15 +96,27 @@ class Profile implements ProfileInterface
         return $this->media instanceof \Blog\Entity\Media;
     }
 
-    public function setUser(User $user)
+    public function setUserData(UserDataInterface $userdata)
     {
-        $user->setProfile($this);
-        $this->user = $user;
+        $userdata->setProfile($this);
+        $this->userdata = $userdata;
+        return $this;
+    }
+
+    public function getUserData()
+    {
+        return $this->userdata;
+    }
+
+    public function setUser(UserInterface $user)
+    {
+        $this->setUserData($user->getData());
+        return $this;
     }
 
     public function getUser()
     {
-        return $this->user;
+        return $this->getUserData()->getUser();
     }
 
     /**
