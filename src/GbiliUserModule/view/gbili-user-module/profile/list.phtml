@@ -35,7 +35,7 @@ $this->headTitle($title);
                     <h4><?php echo $profile->getFirstname() ?> <?php echo $profile->getSurname() ?></h4>
                     <p>
                         <a class="glyphicon glyphicon-eye-open" role="button" href="<?= $this->url('profile_publicly_available', array(
-                            'uniquename' => $profile->getUser()->getUniquename()
+                            'uniquename' => $profile->getUserData()->getUser()->getUniquename()
                         ), true); ?>" title="<?= $this->translate('View') ?>"></a>
                     </p>
                  </div><!-- end caption -->
