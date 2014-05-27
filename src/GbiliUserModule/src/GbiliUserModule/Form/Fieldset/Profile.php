@@ -10,7 +10,7 @@ implements \Zend\InputFilter\InputFilterProviderInterface
 
         $objectManager = $sm->get('Doctrine\ORM\EntityManager');
         $authService   = $sm->get('Zend\Authentication\AuthenticationService');
-        $user = $authService->getIdentity();
+        $userdata = $authService->getIdentity()->getData();
 
         $this->setHydrator(new \DoctrineModule\Stdlib\Hydrator\DoctrineObject($objectManager))
              ->setObject(new \Blog\Entity\PostData());
@@ -61,7 +61,7 @@ implements \Zend\InputFilter\InputFilterProviderInterface
                 'find_method' => array(
                     'name' => 'findBy',
                     'params' => array(
-                        'criteria' => array('user' => $user),
+                        'criteria' => array('userdata' => $userdata),
                     ),
                 ),
                 'display_empty_item' => true,
