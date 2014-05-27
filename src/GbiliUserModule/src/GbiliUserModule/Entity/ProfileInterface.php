@@ -22,9 +22,13 @@ interface ProfileInterface
 
     public function hasMedia();
 
-    public function setUser(User $user);
+    public function setUser(UserInterface $user);
 
     public function getUser();
+
+    public function setUserData(UserDataInterface $userdata);
+
+    public function getUserData();
 
     public function setDate(\DateTime $time);
 
