@@ -24,10 +24,10 @@ interface FileInterface
     public function getType();
 
     public function getMedias();
-    public function addMedia(Media $media);
+    public function addMedia(MediaInterface $media);
     public function addMedias(\Doctrine\Common\Collections\Collection $medias);
     public function unlinkMedias(\Doctrine\Common\Collections\Collection $medias, $newFile=null);
-    public function unlinkMedia(Media $media, $newFile=null);
+    public function unlinkMedia(MediaInterface $media, $newFile=null);
 
     public function setDate(\DateTime $time);
     public function getDate();

@@ -9,7 +9,7 @@ interface MediaInterface
 
     public function getSlug();
 
-    public function setUser(\GbiliUserModule\Entity\UserInterface $user);
+    public function setUser(UserInterface $user);
 
     public function getUser();
 
