@@ -33,6 +33,8 @@ class Module
                 $e->getViewModel()->setVariable('successMessages', $flashMessenger->getSuccessMessages());
             }
         });
+
+        $this->injectDoctrineTargetListeners($e);
     }
 
     public function injectDoctrineTargetListeners($e)
