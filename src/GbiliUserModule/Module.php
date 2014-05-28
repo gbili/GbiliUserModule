@@ -35,8 +35,33 @@ class Module
         });
     }
 
-    public function getServiceConfig()
+    public function injectDoctrineTargetListeners($e)
     {
+        $sm = $e->getApplication()->getServiceManager();
 
+        $config = $sm->get('Config');
+        $doctrineEventListenersConfig = $config['doctrine_event_listeners'];
+
+        $em = $sm->get('doctrine.entitymanager.orm_default');
+        $dem = $em->getEventManager();
+
+        $addedEventListenerHashes = array();
+
+        foreach ($doctrineEventListenersConfig as $eventIdentifier => $eventListeners) {
+            foreach ($eventListeners as $eventListenerSet) {
+                $listenerClass = $eventListenerSet['listener_class'];
+                $listenerMethod = $eventListenerSet['listener_method'];
+                foreach ($eventListenerSet['listeners_params'] as $listenerIdentifierPart => $listenerParams) {
+                    $listenerHash = md5($eventIdentifier . $listenerClass . $listenerMethod . $listenerIdentifierPart);
+                    if (in_array($listenerHash, $addedEventListenerHashes) && !$eventListenerSet['override']) continue;
+
+                    $listener = new $listenerClass;
+                    call_user_func_array(array($listener, $listenerMethod), $listenerParams);
+                    $dem->addEventListener($eventIdentifier, $listener);
+
+                    $addedEventListenerHashes[] = $listenerHash;
+                }
+            }
+        }
     }
 }
