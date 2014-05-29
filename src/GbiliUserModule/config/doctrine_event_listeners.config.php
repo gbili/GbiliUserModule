@@ -4,7 +4,7 @@ return array(
         array(
             // If some other module registered the same listener to the same event with the same params,
             // should it be overriden by this?
-            'override' => false,
+            'priority' => 0,
             // What is the listener class whose method these listeners_params should be passed to
             'listener_class' => '\Doctrine\ORM\Tools\ResolveTargetEntityListener',
             // What specific method will the params be passed to?

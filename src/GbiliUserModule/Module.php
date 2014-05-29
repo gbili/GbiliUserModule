@@ -47,7 +47,7 @@ class Module
         $em = $sm->get('doctrine.entitymanager.orm_default');
         $dem = $em->getEventManager();
 
-        $addedEventListenerHashes = array();
+        $addedEventListenerHashesToPriority = array();
 
         foreach ($doctrineEventListenersConfig as $eventIdentifier => $eventListeners) {
             foreach ($eventListeners as $eventListenerSet) {
@@ -55,13 +55,22 @@ class Module
                 $listenerMethod = $eventListenerSet['listener_method'];
                 foreach ($eventListenerSet['listeners_params'] as $listenerIdentifierPart => $listenerParams) {
                     $listenerHash = md5($eventIdentifier . $listenerClass . $listenerMethod . $listenerIdentifierPart);
-                    if (in_array($listenerHash, $addedEventListenerHashes) && !$eventListenerSet['override']) continue;
+                    if (isset($addedEventListenerHashesToPriority[$listenerHash]) {
+                        $lastPriority = $addedEventListenerHashesToPriority[$listenerHash];
+                        $listenerPriority = (isset($eventListenerSet['priority']))
+                            ? $eventListenerSet['priority']
+                            : 0;
+                        if ($lastPriority >= $listenerPriority) continue;
+                    }
 
                     $listener = new $listenerClass;
                     call_user_func_array(array($listener, $listenerMethod), $listenerParams);
+                    // Last added takes priority over the rest
                     $dem->addEventListener($eventIdentifier, $listener);
 
-                    $addedEventListenerHashes[] = $listenerHash;
+                    $addedEventListenerHashes[$listenerHash] = (isset($listenerPriority))
+                        ? $listenerPriority
+                        : 0;
                 }
             }
         }
