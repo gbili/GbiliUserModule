@@ -55,7 +55,7 @@ class Module
                 $listenerMethod = $eventListenerSet['listener_method'];
                 foreach ($eventListenerSet['listeners_params'] as $listenerIdentifierPart => $listenerParams) {
                     $listenerHash = md5($eventIdentifier . $listenerClass . $listenerMethod . $listenerIdentifierPart);
-                    if (isset($addedEventListenerHashesToPriority[$listenerHash]) {
+                    if (isset($addedEventListenerHashesToPriority[$listenerHash])) {
                         $lastPriority = $addedEventListenerHashesToPriority[$listenerHash];
                         $listenerPriority = (isset($eventListenerSet['priority']))
                             ? $eventListenerSet['priority']
