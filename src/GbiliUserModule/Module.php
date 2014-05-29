@@ -55,11 +55,11 @@ class Module
                 $listenerMethod = $eventListenerSet['listener_method'];
                 foreach ($eventListenerSet['listeners_params'] as $listenerIdentifierPart => $listenerParams) {
                     $listenerHash = md5($eventIdentifier . $listenerClass . $listenerMethod . $listenerIdentifierPart);
+                    $listenerPriority = (isset($eventListenerSet['priority']))
+                        ? $eventListenerSet['priority']
+                        : 0;
                     if (isset($addedEventListenerHashesToPriority[$listenerHash])) {
                         $lastPriority = $addedEventListenerHashesToPriority[$listenerHash];
-                        $listenerPriority = (isset($eventListenerSet['priority']))
-                            ? $eventListenerSet['priority']
-                            : 0;
                         if ($lastPriority >= $listenerPriority) continue;
                     }
 
@@ -68,9 +68,7 @@ class Module
                     // Last added takes priority over the rest
                     $dem->addEventListener($eventIdentifier, $listener);
 
-                    $addedEventListenerHashes[$listenerHash] = (isset($listenerPriority))
-                        ? $listenerPriority
-                        : 0;
+                    $addedEventListenerHashes[$listenerHash] = $listenerPriority;
                 }
             }
         }
