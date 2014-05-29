@@ -16,7 +16,7 @@ interface ProfileInterface
 
     public function getSurname();
 
-    public function setMedia(\Blog\Entity\Media $media = null);
+    public function setMedia(MediaInterface $media = null);
 
     public function getMedia();
 
