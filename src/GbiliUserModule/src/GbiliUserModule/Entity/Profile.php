@@ -81,7 +81,7 @@ class Profile implements ProfileInterface
         return $this->surname;
     }
 
-    public function setMedia(\Blog\Entity\Media $media = null)
+    public function setMedia(\Blog\Entity\MediaInterface $media = null)
     {
         $this->media = $media;
     }
@@ -93,7 +93,7 @@ class Profile implements ProfileInterface
 
     public function hasMedia()
     {
-        return $this->media instanceof \Blog\Entity\Media;
+        return $this->media instanceof \Blog\Entity\MediaInterface;
     }
 
     public function setUserData(UserDataInterface $userdata)
