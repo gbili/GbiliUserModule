@@ -16,11 +16,17 @@ interface ProfileInterface
 
     public function getSurname();
 
-    public function setMedia(MediaInterface $media = null);
+    public function setMedia(\GbiliMediaEntityModule\Entity\MediaInterface $media = null);
 
     public function getMedia();
 
     public function hasMedia();
+
+    public function setMediaData(\GbiliMediaEntityModule\Entity\MediaDataInterface $mediadata = null);
+
+    public function getMediaData();
+
+    public function hasMediaData();
 
     public function setUser(UserInterface $user);
 

@@ -37,7 +37,7 @@ class Profile implements ProfileInterface
     private $userdata;
 
     /**
-     * @ORM\ManyToOne(targetEntity="\GbiliUserModule\Entity\MediaDataInterface", inversedBy="profiles")
+     * @ORM\ManyToOne(targetEntity="\GbiliMediaEntityModule\Entity\MediaDataInterface", inversedBy="profiles")
      * @ORM\JoinColumn(name="mediadata_id", referencedColumnName="id")
      */
     private $mediadata;
