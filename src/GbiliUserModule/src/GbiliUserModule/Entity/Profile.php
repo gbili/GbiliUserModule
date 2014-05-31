@@ -37,10 +37,10 @@ class Profile implements ProfileInterface
     private $userdata;
 
     /**
-     * @ORM\ManyToOne(targetEntity="\GbiliUserModule\Entity\MediaInterface", inversedBy="profiles")
-     * @ORM\JoinColumn(name="media_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="\GbiliUserModule\Entity\MediaDataInterface", inversedBy="profiles")
+     * @ORM\JoinColumn(name="mediadata_id", referencedColumnName="id")
      */
-    private $media;
+    private $mediadata;
 
     /**
      * @var \DateTime
@@ -81,19 +81,36 @@ class Profile implements ProfileInterface
         return $this->surname;
     }
 
-    public function setMedia(MediaInterface $media = null)
+    public function setMedia(\GbiliMediaEntityModule\Entity\MediaInterface $media = null)
     {
-        $this->media = $media;
+        return $this->setMediaData($media->getData());
     }
 
     public function getMedia()
     {
-        return $this->media;
+        return $this->getMediaData()->getMedia();
     }
 
     public function hasMedia()
     {
-        return $this->media instanceof MediaInterface;
+        return $this->hasMediaData() && $this->getMediaData()->hasMedia();
+    }
+
+    public function setMediaData(\GbiliMediaEntityModule\Entity\MediaDataInterface $mediadata = null)
+    {
+        $mediadata->addProfile($this);
+        $this->mediadata = $mediadata;
+        return $this;
+    }
+
+    public function getMediaData()
+    {
+        return $this->mediadata;
+    }
+
+    public function hasMediaData()
+    {
+        return $this->mediadata instanceof \GbiliMediaEntityModule\Entity\MediaDataInterface;
     }
 
     public function setUserData(UserDataInterface $userdata)

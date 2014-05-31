@@ -16,13 +16,18 @@
         {
             "type": "vcs",
             "url": "https://github.com/gbili/GbiliDoctrineConfigEventModule"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/gbili/GbiliMediaEntityModule"
         }
     ],
 
     "require": {
         "php": ">=5.3.3",
         "zendframework/zendframework": "~2.2",
-        "gbili/gbili-doctrine-config-event-module": "dev-master"
+        "gbili/gbili-doctrine-config-event-module": "dev-master",
+        "gbili/gbili-media-entity-module": "dev-master"
     },
     "autoload": {
         "psr-0": {
