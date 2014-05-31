@@ -9,11 +9,13 @@
         "module",
         "zf2"
     ],
+
     "minimum-stability": "dev",
+
     "repositories": [
         {
             "type": "vcs",
-            "url": "gbili/GbiliDoctrineConfigEventModule"
+            "url": "https://github.com/gbili/GbiliDoctrineConfigEventModule"
         }
     ],
 
