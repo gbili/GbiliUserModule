@@ -46,7 +46,7 @@ implements \Zend\InputFilter\InputFilterProviderInterface
 
         $this->add(array(
             'name' => 'media',
-            'type' => 'Blog\Form\Element\ObjectSelect',
+            'type' => 'GbiliDoctrineFormObjectModule\Form\Element\ObjectSelect',
             'options' => array(
                 'label' => 'Profile Picture',
                 'property' => 'slug',
@@ -55,7 +55,7 @@ implements \Zend\InputFilter\InputFilterProviderInterface
                 ),
                 'form_group_class' => 'well',
                 'is_method' => true,
-                'target_class' => 'Blog\Entity\Media',
+                'target_class' => 'GbiliMediaEntityModule\Entity\Media',
                 'object_manager' => $objectManager,
                 'is_method' => true,
                 'find_method' => array(

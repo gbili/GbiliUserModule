@@ -20,6 +20,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/gbili/GbiliMediaEntityModule"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/gbili/GbiliDoctrineFormObjectModule"
         }
     ],
 
@@ -27,7 +31,8 @@
         "php": ">=5.3.3",
         "zendframework/zendframework": "~2.2",
         "gbili/gbili-doctrine-config-event-module": "dev-master",
-        "gbili/gbili-media-entity-module": "dev-master"
+        "gbili/gbili-media-entity-module": "dev-master",
+        "gbili/gbili-doctrine-form-object-module": "dev-master"
     },
     "autoload": {
         "psr-0": {
