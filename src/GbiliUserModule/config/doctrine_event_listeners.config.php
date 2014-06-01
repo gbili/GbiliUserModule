@@ -25,5 +25,17 @@ return array(
                 ),
             ),
         ),
+        array(
+            'priority' => 1,
+            'listener_class' => '\Doctrine\ORM\Tools\ResolveTargetEntityListener',
+            'listener_method' => 'addResolveTargetEntity',
+            'listeners_params' => array( 
+                '\GbiliMediaEntityModule\Entity\MediaDataInterface' => array(
+                    '\GbiliMediaEntityModule\Entity\MediaDataInterface', 
+                    '\GbiliMediaEntityModule\Entity\MediaData', 
+                    array(),
+                ),
+            ),
+        ),
     ),
 );
