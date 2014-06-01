@@ -5,7 +5,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="medias")
+ * @ORM\Table(name="gbilium__media_datas")
  *
  * @ORM\Entity(repositoryClass="Blog\Entity\Repository\Media")
  */

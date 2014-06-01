@@ -4,7 +4,7 @@ namespace GbiliUserModule\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Table(name="profiles")
+ * @ORM\Table(name="gbilium__profiles")
  * @ORM\Entity
  */
 class Profile implements ProfileInterface
