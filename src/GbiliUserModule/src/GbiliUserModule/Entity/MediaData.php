@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="Blog\Entity\Repository\Media")
  */
 class MediaData implements 
-    \GbiliyModule\Entity\MediaDataInterface
+    \GbiliMediaEntityModule\Entity\MediaDataInterface
 {
     /**
      * @ORM\Column(name="id", type="integer")
