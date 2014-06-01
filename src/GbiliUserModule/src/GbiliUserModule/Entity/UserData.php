@@ -26,30 +26,9 @@ class UserData implements UserDataInterface
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\OneToMany(targetEntity="\Blog\Entity\Post", mappedBy="userdata")
-     */
-    private $posts;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\OneToMany(targetEntity="\Blog\Entity\Category", mappedBy="userdata")
-     */
-    private $categories;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\OneToMany(targetEntity="\Blog\Entity\Media", mappedBy="userdata")
+     * @ORM\OneToMany(targetEntity="\GbiliMediaEntityModule\Entity\MediaInterface", mappedBy="userdata")
      */
     private $medias;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\OneToMany(targetEntity="\Dogtore\Entity\Dog", mappedBy="userdata")
-     */
-    private $dogs;
 
     /**
      * @ORM\OneToOne(targetEntity="\GbiliUserModule\Entity\ProfileInterface", inversedBy="userdata")
@@ -59,9 +38,7 @@ class UserData implements UserDataInterface
 
     public function __construct()
     {
-        $this->posts      = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->dogs       = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->medias       = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getId()
@@ -108,8 +85,8 @@ class UserData implements UserDataInterface
 
     public function __call($method, $params)
     {
-        $allowed = array('Dog', 'Post', 'Category');
-        $allowedPlural = array('Dogs',  'Posts', 'Categories');
+        $allowed = array('Media');
+        $allowedPlural = array('Medias');
 
         $parts = preg_split('/(?=[A-Z])/', $method);
         $uCFirstWhat = array_pop($parts);
