@@ -32,7 +32,7 @@ return array(
             'listeners_params' => array( 
                 '\GbiliMediaEntityModule\Entity\MediaDataInterface' => array(
                     '\GbiliMediaEntityModule\Entity\MediaDataInterface', 
-                    '\GbiliMediaEntityModule\Entity\MediaData', 
+                    '\GbiliUserModule\Entity\MediaData', 
                     array(),
                 ),
             ),
