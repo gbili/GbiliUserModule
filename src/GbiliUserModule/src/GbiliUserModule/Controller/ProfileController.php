@@ -34,12 +34,13 @@ class ProfileController extends \Zend\Mvc\Controller\AbstractActionController
     {
         $user          = $profile->getUser();
         $media         = $profile->getMedia();
-        $mediaMetadata = $this->em()->getRepository('GbiliUserModule\Entity\MediaMetadata')->findOneByMedia($media);
+        $mediaMetadata = $this->em()->getRepository('GbiliMediaEntityModule\Entity\MediaMetadata')->findOneByMedia($media);
         $messages      = $this->messenger()->getMessages();
 
         $viewVars = array(
             'profile', 
             'media', 
+            'mediaMetadata', 
             'user', 
             'messages',
         );
