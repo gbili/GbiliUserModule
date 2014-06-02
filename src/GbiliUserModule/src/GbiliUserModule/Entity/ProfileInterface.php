@@ -32,10 +32,6 @@ interface ProfileInterface
 
     public function getUser();
 
-    public function setUserData(UserDataInterface $userdata);
-
-    public function getUserData();
-
     public function setDate(\DateTime $time);
 
     public function getDate();

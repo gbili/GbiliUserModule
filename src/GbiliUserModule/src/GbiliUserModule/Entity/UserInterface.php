@@ -15,10 +15,6 @@ interface UserInterface
 
     public function getEmail();
 
-    public function setData(UserDataInterface $data);
-
-    public function getData();
-
     public function setUniquename($uniquename);
 
     public function setPassword($clearPassword);
