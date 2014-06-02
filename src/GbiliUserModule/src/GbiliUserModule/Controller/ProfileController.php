@@ -28,9 +28,9 @@ class ProfileController extends \Zend\Mvc\Controller\AbstractActionController
         return $this->displayUserProfile($user);
     }
 
-    protected function displayUserProfile(\GbiliUserModule\Entity\User $user)
+    protected function displayUserProfile(\GbiliUserModule\Entity\UserInterface $user)
     {
-        $profile = $user->getProfile();        
+        $profile = $this->em()->getRepository('GbiliUserModule\Entity\Profile')->findOneByUser($user);
         $media = $profile->getMedia();
         $mediaMetadata = $media->getLocalizedMetadata($this->lang());
 
@@ -136,7 +136,7 @@ class ProfileController extends \Zend\Mvc\Controller\AbstractActionController
 
         $objectManager = $this->em();
         $user          = $this->identity();
-        $profile       = $user->getProfile();
+        $profile       = $this->em()->getRepository('GbiliUserModule\Entity\Profile')->findOneByUser($user);
 
         $profileForm   = new \GbiliUserModule\Form\ProfileEditor($this->getServiceLocator());
         $profileForm->bind($profile);
