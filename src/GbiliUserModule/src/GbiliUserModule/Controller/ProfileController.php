@@ -32,9 +32,10 @@ class ProfileController extends \Zend\Mvc\Controller\AbstractActionController
 
     protected function displayUserProfile(\GbiliUserModule\Entity\ProfileInterface $profile)
     {
-        $user = $profile->getUser();
-        $media = $profile->getMedia();
-        $messages = $this->messenger()->getMessages();
+        $user          = $profile->getUser();
+        $media         = $profile->getMedia();
+        $mediaMetadata = $this->em()->getRepository('GbiliUserModule\Entity\MediaMetadata')->findOneByMedia($media);
+        $messages      = $this->messenger()->getMessages();
 
         $viewVars = array(
             'profile', 
