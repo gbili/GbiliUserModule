@@ -18,6 +18,11 @@ return array(
                     '\GbiliUserModule\Entity\User', 
                     array(),
                 ),
+                '\GbiliUserModule\Entity\ProfileInterface' => array(
+                    '\GbiliUserModule\Entity\ProfileInterface', 
+                    '\GbiliUserModule\Entity\Profile', 
+                    array(),
+                ),
             ),
         ),
     ),
