@@ -12,7 +12,7 @@ implements \Zend\InputFilter\InputFilterProviderInterface
         $authService   = $sm->get('Zend\Authentication\AuthenticationService');
         $user = $authService->getIdentity();
 
-        $this->setHydrator(new \DoctrineModule\Stdlib\Hydrator\DoctrineObject($objectManager))
+        $this->setHydrator(new \DoctrineModule\Stdlib\Hydrator\DoctrineObject($objectManager, false))
              ->setObject(new \GbiliUserModule\Entity\Profile());
         
         $this->add(array(
