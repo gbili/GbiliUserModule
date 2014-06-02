@@ -12,7 +12,8 @@ class ProfileController extends \Zend\Mvc\Controller\AbstractActionController
     public function privateAction()
     {
         $user = $this->identity();
-        if (!$user->hasProfile()) {
+        $profile = $this->em()->getRepository('GbiliUserModule\Entity\Profile')->findOneByUser($user);
+        if (empty($profile)) {
             return $this->redirect()->toRoute('profile_edit', array('uniquename' => $user->getUniquename()), true);
         }
         return $this->displayUserProfile($user);
@@ -21,25 +22,23 @@ class ProfileController extends \Zend\Mvc\Controller\AbstractActionController
     public function publicAction()
     {
         $user = $this->getParamsUniquenameUser();
-        if (!$user->hasProfile()) {
+        $profile = $this->em()->getRepository('GbiliUserModule\Entity\Profile')->findOneByUser($user);
+        if (empty($profile)) {
             $this->getResponse()->setStatusCode(404);
             return;
         }
-        return $this->displayUserProfile($user);
+        return $this->displayUserProfile($profile);
     }
 
-    protected function displayUserProfile(\GbiliUserModule\Entity\UserInterface $user)
+    protected function displayUserProfile(\GbiliUserModule\Entity\ProfileInterface $profile)
     {
-        $profile = $this->em()->getRepository('GbiliUserModule\Entity\Profile')->findOneByUser($user);
+        $user = $profile->getUser();
         $media = $profile->getMedia();
-        $mediaMetadata = $media->getLocalizedMetadata($this->lang());
-
         $messages = $this->messenger()->getMessages();
 
         $viewVars = array(
             'profile', 
             'media', 
-            'mediaMetadata', 
             'user', 
             'messages',
         );

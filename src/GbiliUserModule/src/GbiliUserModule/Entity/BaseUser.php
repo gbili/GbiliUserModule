@@ -43,6 +43,8 @@ class BaseUser implements UserInterface
      */
     private $role;
 
+    protected $profile;
+
     public function __construct()
     {
     }
