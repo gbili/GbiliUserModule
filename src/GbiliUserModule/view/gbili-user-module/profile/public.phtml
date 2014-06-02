@@ -21,10 +21,6 @@
                     <ul class="list-group">
                         <li class="list-group-item"><strong><?= $this->translate('Username')?></strong> : <?= $user->getUniquename()?></li>
                     </ul>
-                    <?php $options = array() ?>
-                    <?php $options['bold_dog_names'] = true ?>
-                    <?php $options['refer_as_you'] = false ?>
-                    <div class="panel-body"><p><?= $this->userHasNDogsAndTheirNamesArePhrase($user, $options) ?></p></div>
                 </div>
             </div>
         </div>
