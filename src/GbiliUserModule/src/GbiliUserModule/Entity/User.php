@@ -149,10 +149,15 @@ class User implements UserInterface
 
     public function getData()
     {
-        if (null === $this->data) {
-            $this->setData(new UserData());
+        if (!$this->hasData()) {
+            throw new \Exception('No data has been set');
         }
         return $this->data;
+    }
+
+    public function hasData()
+    {
+        return null !== $this->data;
     }
 
     /**
