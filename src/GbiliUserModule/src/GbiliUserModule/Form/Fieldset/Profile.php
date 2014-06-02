@@ -13,7 +13,7 @@ implements \Zend\InputFilter\InputFilterProviderInterface
         $userdata = $authService->getIdentity()->getData();
 
         $this->setHydrator(new \DoctrineModule\Stdlib\Hydrator\DoctrineObject($objectManager))
-             ->setObject(new \Blog\Entity\PostData());
+             ->setObject(new \GbiliUserModule\Entity\Profile());
         
         $this->add(array(
             'name' => 'id',
