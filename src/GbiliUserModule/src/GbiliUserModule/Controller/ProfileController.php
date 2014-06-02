@@ -16,7 +16,7 @@ class ProfileController extends \Zend\Mvc\Controller\AbstractActionController
         if (empty($profile)) {
             return $this->redirect()->toRoute('profile_edit', array('uniquename' => $user->getUniquename()), true);
         }
-        return $this->displayUserProfile($user);
+        return $this->displayUserProfile($profile);
     }
 
     public function publicAction()
