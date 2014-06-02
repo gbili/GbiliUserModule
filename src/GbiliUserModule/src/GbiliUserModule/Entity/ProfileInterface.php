@@ -22,12 +22,6 @@ interface ProfileInterface
 
     public function hasMedia();
 
-    public function setMediaData(\GbiliMediaEntityModule\Entity\MediaDataInterface $mediadata = null);
-
-    public function getMediaData();
-
-    public function hasMediaData();
-
     public function setUser(UserInterface $user);
 
     public function getUser();
