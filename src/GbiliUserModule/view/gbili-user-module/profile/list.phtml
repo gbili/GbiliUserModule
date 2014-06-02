@@ -26,20 +26,19 @@ $this->headTitle($title);
         <?php foreach($profiles as $profile) : ?>
             <?php
                 $media = $profile->getMedia();
-                $mediaMetadata = $media->getLocalizedMetadata($this->lang());
             ?>
             <li>
                 <div>
-                    <img src="<?php echo $media->getSrc()?>" class="img-rounded img-responsive" alt="<?= ((null !== $mediaMetadata)? $mediaMetadata->getAlt() : '')?>"/>
-                  <div class="caption">
-                    <h4><?php echo $profile->getFirstname() ?> <?php echo $profile->getSurname() ?></h4>
-                    <p>
-                        <a class="glyphicon glyphicon-eye-open" role="button" href="<?= $this->url('profile_publicly_available', array(
-                            'uniquename' => $profile->getUserData()->getUser()->getUniquename()
-                        ), true); ?>" title="<?= $this->translate('View') ?>"></a>
-                    </p>
-                 </div><!-- end caption -->
-               </div><!-- end thumbnail -->
+                    <img src="<?php echo $media->getSrc()?>" class="img-rounded img-responsive" alt="<?= $this->translate('Profile Picture') ?>"/>
+                    <div class="caption">
+                        <h4><?php echo $profile->getFirstname() ?> <?php echo $profile->getSurname() ?></h4>
+                        <p>
+                            <a class="glyphicon glyphicon-eye-open" role="button" href="<?= $this->url('profile_publicly_available', array(
+                                'uniquename' => $profile->getUserData()->getUser()->getUniquename()
+                            ), true); ?>" title="<?= $this->translate('View') ?>"></a>
+                        </p>
+                    </div><!-- end caption -->
+                </div><!-- end thumbnail -->
             </li>
         <?php endforeach ?>
         </ul>
