@@ -73,9 +73,6 @@ class BaseProfile implements ProfileInterface
 
     public function getMedia()
     {
-        if (!$this->hasMedia()) {
-            throw new \Exception('Media is not set');
-        }
         return $this->media;
     }
 
