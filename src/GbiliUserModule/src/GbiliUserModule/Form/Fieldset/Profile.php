@@ -53,7 +53,7 @@ implements \Zend\InputFilter\InputFilterProviderInterface
                 'attributes' => array(
                     'data-img-src' => 'src',
                 ),
-                'form_group_class' => 'well',
+                'form_group_class' => 'well gbili-add-media-button-container',
                 'is_method' => true,
                 'target_class' => 'GbiliMediaEntityModule\Entity\Media',
                 'object_manager' => $objectManager,
