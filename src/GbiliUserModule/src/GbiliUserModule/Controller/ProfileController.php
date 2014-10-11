@@ -167,7 +167,15 @@ class ProfileController extends \Zend\Mvc\Controller\AbstractActionController
         $profile->setUser($user);
         
         if (!$profile->hasMedia()) {
-            $genericMedia = $this->repository('GbiliMediaEntityModule\Entity\Media')->getDefaultMedia($profile);
+            $mediaRepo = $this->repository('GbiliMediaEntityModule\Entity\Media');
+            if (!$mediaRepo->hasConfig()) {
+                $config = $this->sm()->get('Config');
+                if (!isset($config['gbilimem']['default_medias_slug'])) {
+                    throw new \Exception('Missing gbilimem config');
+                }
+                $mediaRepo->setConfig($config['gbilimem']['default_medias_slug']);
+            }
+            $genericMedia = $mediaRepo->getDefaultMedia(get_class($profile));
             $profile->setMedia($genericMedia);
         }
 

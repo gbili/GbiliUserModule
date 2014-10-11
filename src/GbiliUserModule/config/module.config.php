@@ -7,6 +7,13 @@ return array(
         ),
     ),
 
+    // Used by GbiliMediaEntityModule\Entity\Repository\Media for getDefaultMedia()
+    'gbilimem'                 => array(
+        'default_medias_slug' => array(
+            __NAMESPACE__ . '\Entity\Profile' => 'default-profile.jpg',
+        ),
+    ),
+
     'controller_plugins'       => include __DIR__ . '/controller_plugins.config.php',
     'controllers'              => include __DIR__ . '/controllers.config.php',
     'doctrine'                 => include __DIR__ . '/doctrine.config.php',
