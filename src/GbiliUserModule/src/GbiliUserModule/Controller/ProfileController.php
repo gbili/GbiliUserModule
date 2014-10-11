@@ -167,7 +167,7 @@ class ProfileController extends \Zend\Mvc\Controller\AbstractActionController
         $profile->setUser($user);
         
         if (!$profile->hasMedia()) {
-            $genericMedia = $this->repository('Blog\Entity\Media')->getDefaultMedia($profile);
+            $genericMedia = $this->repository('GbiliMediaEntityModule\Entity\Media')->getDefaultMedia($profile);
             $profile->setMedia($genericMedia);
         }
 
