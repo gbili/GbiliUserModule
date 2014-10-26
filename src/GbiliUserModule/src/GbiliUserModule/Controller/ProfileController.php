@@ -91,7 +91,7 @@ class ProfileController extends \Zend\Mvc\Controller\AbstractActionController
             throw new \Exception('uniquename route param not set');
         }
 
-        if ($paramsUniquename === $this->identity()->getUniquename()) {
+        if ($this->identity() && $paramsUniquename === $this->identity()->getUniquename()) {
             return $this->paramsUniquenameUser = $this->identity();
         }
         if (!$this->isParamsUniquenameExistingUser()) {
