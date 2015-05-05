@@ -12,7 +12,7 @@ namespace GbiliUserModule\Service;
 /**
  * Default navigation factory.
  */
-class PublicUserNavigationFactory extends AbstractNavigationFactory
+class PublicUserNavigationFactory extends \Zend\Navigation\Service\AbstractNavigationFactory
 {
     /**
      * @return string
