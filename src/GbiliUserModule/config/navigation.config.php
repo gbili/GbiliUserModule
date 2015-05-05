@@ -1,6 +1,6 @@
 <?php
 return array(
-        'default' => array(
+        'gbili_user_public' => array(
             'profile_list' => array(
                 'label' => 'Profiles',
                 'route' => 'profile_list',
